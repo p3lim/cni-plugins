@@ -1,4 +1,4 @@
-name: Update CNI plugins version
+name: cni_version
 
 on:
   schedule:
