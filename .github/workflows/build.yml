@@ -37,4 +37,4 @@ jobs:
           platforms: linux/amd64
           build-args: CNI_VERSION=${{ steps.cni_version.outputs.tag }}
           push: true
-          tags: ${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ steps.cni_version.outputs.tag }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.cni_version.outputs.tag }}
