@@ -27,6 +27,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: Update CNI plugins version
-          commit-message: ':arrow-up: CNI plugins ${{ steps.cni_version.outputs.tag }}'
+          body: 'https://github.com/containernetworking/plugins/releases/tag/${{ steps.cni_version.outputs.tag }}'
+          commit-message: ':arrow_up: CNI plugins ${{ steps.cni_version.outputs.tag }}'
           branch: cni-plugins/${{ steps.cni_version.outputs.tag }}
           delete-branch: true
