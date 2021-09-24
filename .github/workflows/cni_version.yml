@@ -24,7 +24,7 @@ jobs:
           sed -i 's|CNI_VERSION=".*"|CNI_VERSION="${{ steps.cni_version.outputs.tag }}"|' Dockerfile
 
       - name: Create pull request
-        uses: peter-evans/create-pullrequest@v3
+        uses: peter-evans/create-pull-request@v3
         with:
           title: Update CNI plugins version
           commit-message: ':arrow-up: CNI plugins ${{ steps.cni_version.outputs.tag }}'
