@@ -10,7 +10,7 @@ RUN apk add --no-cache git bash \
  && cd /build \
  && bash build_linux.sh
 
-FROM docker.io/library/alpine:3.12
+FROM docker.io/library/alpine:3.14.2
 COPY --from=build /build/bin/ /opt/cni/bin
 ENTRYPOINT ["/bin/sleep"]
 CMD ["infinity"]
