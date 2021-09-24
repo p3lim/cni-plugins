@@ -27,6 +27,6 @@ jobs:
         uses: peter-evans/create-pullrequest@v3
         with:
           title: Update CNI plugins version
-          commit-message: :arrow-up: CNI plugins ${{ steps.cni_version.outputs.tag }}
+          commit-message: ':arrow-up: CNI plugins ${{ steps.cni_version.outputs.tag }}'
           branch: cni-plugins/${{ steps.cni_version.outputs.tag }}
           delete-branch: true
