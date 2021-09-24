@@ -1,0 +1,32 @@
+name: Update CNI plugins version
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  cni_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Gather CNI version
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: containernetworking/plugins
+          releases-only: true
+        id: cni_version
+
+      - name: Update version string
+        run: |
+          sed -i 's|CNI_VERSION=".*"|CNI_VERSION="${{ steps.cni_version.outputs.tag }}"|' Dockerfile
+
+      - name: Create pull request
+        uses: peter-evans/create-pullrequest@v3
+        with:
+          title: Update CNI plugins version
+          commit-message: :arrow-up: CNI plugins ${{ steps.cni_version.outputs.tag }}
+          branch: cni-plugins/${{ steps.cni_version.outputs.tag }}
+          delete-branch: true
