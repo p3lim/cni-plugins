@@ -42,10 +42,10 @@ spec:
           volumeMounts:
             - name: cni-bin
               mountPath: /opt/cni/bin
-        volumes:
-          - name: cni-bin
-            hostPath:
-              path: /opt/cni/bin
+      volumes:
+        - name: cni-bin
+          hostPath:
+            path: /opt/cni/bin
 ```
 
 This is useful for Kubernetes distributions like [Talos](https://talos.dev), which don't supply this themselves, allowing usage of arcane CNIs like [Multus](https://github.com/k8snetworkplumbingwg/multus-cni).
